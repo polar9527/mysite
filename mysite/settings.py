@@ -101,3 +101,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# E-mail
+with open(os.path.join(BASE_DIR, 'passwd')) as f:
+    SECRET_KEY = f.read().strip()
+
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_HOST_USER = 'polar9527@163.com'
+EMAIL_HOST_PASSWORD = SECRET_KEY
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True

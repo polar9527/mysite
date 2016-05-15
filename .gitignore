@@ -61,5 +61,8 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
-#Pyenv files
+# Pyenv files
 .python-version
+
+# E-mail password file
+passwd
