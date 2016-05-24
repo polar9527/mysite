@@ -27,9 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# The “sites” framework
+SITE_ID = 1
 
 # Application definition
-SITE_ID = 1     # sitemaps
 
 INSTALLED_APPS = (
     'django.contrib.admin',
