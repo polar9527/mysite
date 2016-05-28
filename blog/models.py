@@ -6,18 +6,19 @@ from django.core.urlresolvers import reverse
 
 from taggit.managers import TaggableManager
 
+
 # Create your models here.
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager,self)\
-                    .get_queryset()\
-                    .filter(status='published')
+        return super(PublishedManager, self) \
+            .get_queryset() \
+            .filter(status='published')
 
 
 class Post(models.Model):
     STATUS_CHOICES = (
-        ('draft','Draft'),
-        ('published','Published'),
+        ('draft', 'Draft'),
+        ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
     slug = models.SlugField(
@@ -35,8 +36,8 @@ class Post(models.Model):
         choices=STATUS_CHOICES,
         default='draft')
 
-    objects = models.Manager() # The default manager.
-    published = PublishedManager() # Our custom manager.
+    objects = models.Manager()  # The default manager.
+    published = PublishedManager()  # Our custom manager.
 
     tags = TaggableManager()
 
@@ -48,12 +49,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-                'blog:post_detail',
-                args=[
-                    self.publish.year,
-                    self.publish.strftime('%m'),
-                    self.publish.strftime('%d'),
-                    self.slug])
+            'blog:post_detail',
+            args=[
+                self.publish.year,
+                self.publish.strftime('%m'),
+                self.publish.strftime('%d'),
+                self.slug])
 
 
 class Comment(models.Model):
